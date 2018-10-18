@@ -20,6 +20,13 @@ systemctl restart dbus
 
 echo $(date) " - System updates successfully installed"
 
+# Install Ansible and pyOpenSSL
+# python-passlib needed for metrics
+
+echo $(date) " - Installing Ansible, pyOpenSSL and python-passlib"
+yum -y --enablerepo=epel install pyOpenSSL python-passlib ansible
+echo $(date) " - Ansible, pyOpenSSL and py-passlib installed successfully"
+
 # Grow Root File System
 echo $(date) " - Grow Root FS"
 

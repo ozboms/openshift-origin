@@ -6,13 +6,16 @@
 			"value": "https://raw.githubusercontent.com/Microsoft/openshift-origin/master"
 		},
 		"masterVmSize": {
-			"value": "Standard_D4s_v3"
+			"value": "Standard_E2s_v3"
 		},
 		"infraVmSize": {
 			"value": "Standard_D4s_v3"
 		},
 		"nodeVmSize": {
 			"value": "Standard_D4s_v3"
+		},
+		"cnsVmSize": {
+			"value": "Standard_E4s_v3"
 		},
 		"storageKind": {
 			"value": "managed"
@@ -39,9 +42,12 @@
 			"value": "ThisIsYourSampleSecret!ShouldStayLocal!"
 		},
 		"enableMetrics": {
-			"value": "true"
+			"value": "false"
 		},
 		"enableLogging": {
+			"value": "false"
+		},
+		"enableCNS": {
 			"value": "false"
 		},
 		"sshPublicKey": {
@@ -70,6 +76,48 @@
 		},
 		"defaultSubDomain": {
 			"value": "domain-name-all-lowercase-if-custom-used.com"
+		},
+		"virtualNetworkNewOrExisting": {
+			"value": "new"
+		},
+		"virtualNetworkResourceGroupName": {
+			"value": "vnetrg"
+		},
+		"virtualNetworkName": {
+			"value": "openshiftvnet"
+		},
+		"addressPrefixes": {
+			"value": "10.0.0.0/14"
+		},
+		"masterSubnetName": {
+			"value": "mastersubnet"
+		},
+		"masterSubnetPrefix": {
+			"value": "10.1.0.0/16"
+		},
+		"nodeSubnetName": {
+			"value": "nodesubnet"
+		},
+		"nodeSubnetPrefix": {
+			"value": "10.2.0.0/16"
+		},
+		"masterClusterType": {
+			"value": "public"
+		},
+		"masterPrivateClusterIp": {
+			"value": "10.1.0.200"
+		},
+		"masterPrivateClusterDns": {
+			"value": "internalmaster.net"
+		},
+		"routerClusterType": {
+			"value": "public"
+		},
+		"routerPrivateClusterIp": {
+			"value": "10.1.0.201"
+		},
+		"customHeaderImage": {
+			"value": "https://client.power.sh/logo.png"
 		}
 	}
 }

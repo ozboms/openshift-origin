@@ -4,21 +4,18 @@
 	"parameters": {
 		"location": {
 			"type": "string",
-			"minLength": 1,
 			"metadata": {
 				"description": "Datacenter Region Location"
 			}
 		},
 		"sshKeyPath": {
 			"type": "string",
-			"minLength": 1,
 			"metadata": {
 				"description": "SSH Public Key Path"
 			}
 		},
 		"sshPublicKey": {
 			"type": "string",
-			"minLength": 1,
 			"metadata": {
 				"description": "SSH Public Key"
 			}
@@ -31,28 +28,24 @@
 		},
 		"adminUsername": {
 			"type": "string",
-			"minLength": 1,
 			"metadata": {
 				"description": "Admin Username"
 			}
 		},
 		"vmSize": {
 			"type": "string",
-			"minLength": 1,
 			"metadata": {
 				"description": "VM Size"
 			}
 		},
 		"availabilitySet": {
 			"type": "string",
-			"minLength": 1,
 			"metadata": {
 				"description": "Name of Availibility Set"
 			}
 		},
-		"hostname": {
+		"hostName": {
 			"type": "string",
-			"minLength": 1,
 			"metadata": {
 				"description": "VM Hostname"
 			}
@@ -178,15 +171,15 @@
 	},
 	"resources": [{
 		"type": "Microsoft.Compute/virtualMachines",
-		"name": "[parameters('hostname')]",
+		"name": "[parameters('hostName')]",
 		"location": "[parameters('location')]",
 		"apiVersion": "[parameters('apiVersionCompute')]",
 		"tags": {
 			"Role": "[parameters('role')]",
-			"provider": "[parameters('redHatTags').provider]",
-			"app": "[parameters('redHatTags').app]",
-			"version": "[parameters('redHatTags').version]",
-			"platform": "[parameters('redHatTags').platform]"
+				"provider": "[parameters('redHatTags').provider]",
+				"app": "[parameters('redHatTags').app]",
+				"version": "[parameters('redHatTags').version]",
+				"platform": "[parameters('redHatTags').platform]"
 		},
 		"properties": {
 			"availabilitySet": {
@@ -196,7 +189,7 @@
 				"vmSize": "[parameters('vmSize')]"
 			},
 			"osProfile": {
-				"computerName": "[parameters('hostname')]",
+				"computerName": "[parameters('hostName')]",
 				"adminUsername": "[parameters('adminUsername')]",
 				"linuxConfiguration": {
 					"disablePasswordAuthentication": true,
@@ -211,7 +204,7 @@
 			"storageProfile": "[variables(variables('storageProfile'))]",
 			"networkProfile": {
 				"networkInterfaces": [{
-					"id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('hostname'), '-nic'))]"
+					"id": "[resourceId('Microsoft.Network/networkInterfaces', concat(parameters('hostName'), '-nic'))]"
 				}]
 			},
 			"diagnosticsProfile": {
