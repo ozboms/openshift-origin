@@ -89,7 +89,7 @@ then
     az account set -s $SUBSCRIPTIONID
 
     # Adding Storage Extension
-    az extension add --name storage-preview
+    az extension add --name storage-preview || echo
 fi
 
 # Setting the default openshift_cloudprovider_kind if Azure enabled
