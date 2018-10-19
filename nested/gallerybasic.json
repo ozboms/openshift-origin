@@ -113,7 +113,7 @@
 			}
 		},
 		"unmanagedStorageProfile": {
-			"imageReference": "[parameters(imageReference)]",
+			"imageReference": "[parameters('imageReference')]",
 			"osDisk": {
 				"name": "[concat(parameters('hostName'), '-osdisk')]",
 				"vhd": {
