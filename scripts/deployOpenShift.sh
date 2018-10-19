@@ -365,7 +365,7 @@ runuser -l $SUDOUSER -c "git clone -b release-3.10 https://github.com/openshift/
 
 # Setup NetworkManager to manage eth0
 echo $(date) " - Running NetworkManager playbook"
-runuser -l $SUDOUSER -c "ansible-playbook -f 30 /usr/share/ansible/openshift-ansible/playbooks/openshift-node/network_manager.yml"
+runuser -l $SUDOUSER -c "ansible-playbook -f 30 ~/openshift-ansible/playbooks/openshift-node/network_manager.yml"
 
 # Configure DNS so it always has the domain name
 echo $(date) " - Adding $DOMAIN to search for resolv.conf"
