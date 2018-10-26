@@ -361,7 +361,7 @@ $cnsgroup
 EOF
 
 echo $(date) " - Cloning openshift-ansible repo for use in installation"
-runuser -l $SUDOUSER -c "git clone -b release-3.10 https://github.com/openshift/openshift-ansible /home/$SUDOUSER/openshift-ansible"
+((cd /home/$SUDOUSER && git clone -b release-3.10 https://github.com/openshift/openshift-ansible) || (cd /home/$SUDOUSER/openshift-ansible && git pull))
 
 # Setup NetworkManager to manage eth0
 echo $(date) " - Running NetworkManager playbook"
