@@ -1,8 +1,8 @@
 #!/bin/bash
 echo $(date) " - Starting Bastion Prep Script"
 
-PRIVATEKEY=$4
-SUDOUSER=$5
+PRIVATEKEY=$1
+SUDOUSER=$2
 
 # Generate private keys for use by Ansible
 echo $(date) " - Generating Private keys for use by Ansible for OpenShift Installation"
