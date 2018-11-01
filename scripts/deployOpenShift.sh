@@ -376,12 +376,12 @@ echo $(date) " - Restarting NetworkManager"
 runuser -l $SUDOUSER -c "ansible all -o -f 30 -b -m service -a \"name=NetworkManager state=restarted\""
 echo $(date) " - NetworkManager configuration complete"
 
-# Run OpenShift Container Platform prerequisites playbook
+# Run OKD prerequisites playbook
 echo $(date) " - Running Prerequisites via Ansible Playbook"
 runuser -l $SUDOUSER -c "ansible-playbook -e openshift_cloudprovider_azure_client_id=$AADCLIENTID -e openshift_cloudprovider_azure_client_secret=\"$AADCLIENTSECRET\" -e openshift_cloudprovider_azure_tenant_id=$TENANTID -e openshift_cloudprovider_azure_subscription_id=$SUBSCRIPTIONID -f 30  ~/openshift-ansible/playbooks/prerequisites.yml"
 echo $(date) " - Prerequisites check complete"
 
-# Initiating installation of OpenShift Container Platform using Ansible Playbook
+# Initiating installation of OKD using Ansible Playbook
 echo $(date) " - Installing OpenShift Container Platform via Ansible Playbook"
 runuser -l $SUDOUSER -c "ansible-playbook -e openshift_cloudprovider_azure_client_id=$AADCLIENTID -e openshift_cloudprovider_azure_client_secret=\"$AADCLIENTSECRET\" -e openshift_cloudprovider_azure_tenant_id=$TENANTID -e openshift_cloudprovider_azure_subscription_id=$SUBSCRIPTIONID -f 30  ~/openshift-ansible/playbooks/deploy_cluster.yml"
 if [ $? -eq 0 ]
@@ -409,7 +409,7 @@ cp /openshift-origin-client-tools-v3.10.0-dd10d17-linux-64bit/oc /usr/bin/oc
 echo $(date) " - Adding OpenShift user"
 runuser $SUDOUSER -c "ansible-playbook -f 30 ~/openshift-container-platform-playbooks/addocpuser.yaml"
 
-# Assigning cluster admin rights to OpenShift user
+# Assigning cluster admin rights to OKD user
 echo $(date) " - Assigning cluster admin rights to user"
 runuser $SUDOUSER -c "ansible-playbook -f 30 ~/openshift-container-platform-playbooks/assignclusteradminrights.yaml"
 
